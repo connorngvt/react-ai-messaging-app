@@ -1,15 +1,15 @@
-import React from "react"
-import LoginForm from "./LoginForm"
-import './LoginForm.css'
-import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginRegisterPage from "./pages/LoginRegisterPage";
 
+function App() {
   return (
-    <>
-      <LoginForm />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="*" element={<LoginRegisterPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

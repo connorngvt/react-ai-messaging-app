@@ -15,6 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="*" element={<LoginRegisterPage />} />
+        <Route> path=" element={<}</Route>
       </Routes>
     </Router>
   );

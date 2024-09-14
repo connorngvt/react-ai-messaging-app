@@ -7,33 +7,22 @@ import { FaLock } from "react-icons/fa";
 const ForgotForm = () => {
 
   return (
-    <div className="login-form">
+    <div className="forgot-form">
       <form action="">
-        <h1>Login</h1>
-        <div className="login-form__input-box">
-          <input type="text" placeholder="Username" required />
+        <h1>Forgot Password</h1>
+        <div className="forgot-form__input-box">
+          <input type="text" placeholder="Email" required />
           <FaUser className="icon" />
         </div>
-        <div className="login-form__input-box">
-          <input type="password" placeholder="Password" required />
-          <FaLock className="icon" />
-        </div>
       </form>
-      <div className="login-form__remember-forgot">
-        <label>
-          <input type="checkbox" />
-          Remember me
-        </label>
-        <a href="#">Forgot password</a>
-      </div>
       <div class="col-auto">
         <button id="button" type="submit" className="btn btn-primary mb-3">
-          Login
+          Send Email
         </button>
       </div>
-      <div className="login-form__register-link">
+      <div className="login-form__goback-link">
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+           <Link to="/register">Sign In</Link>
         </p>
       </div>
     </div>

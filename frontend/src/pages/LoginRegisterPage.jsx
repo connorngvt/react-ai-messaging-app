@@ -10,7 +10,6 @@ const LoginRegisterPage = () => {
   return (
     <div>
       <Routes>
-        <Route path="*" element={<LoginForm />} />
         <Route path="login" element={<LoginForm />} />
         <Route path="register" element={<RegisterForm />} />
         <Route path="forgot" element={<ForgotForm />} />

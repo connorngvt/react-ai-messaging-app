@@ -1,10 +1,10 @@
-.register-form {
+.forgot-form {
   width: 420px;
   background: #fff;
   border: 2px solid rgba(255, 255, 2555, 0.2);
   color: #000;
   backdrop-filter: blur(30px);
-  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 2555, 0.2);
   border-radius: 10px;
   padding: 30px 40px;
 
@@ -63,20 +63,20 @@
     }
   }
 
-  .login-link {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-  }
+  .go-back {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  p {
-    a {
-      color: #000;
-      text-decoration: none;
-      font-weight: 600;
+    p {
+      a {
+        color: black;
+        text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

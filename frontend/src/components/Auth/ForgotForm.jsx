@@ -1,16 +1,15 @@
 import React from "react";
 import "./ForgotForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
 
 const ForgotForm = () => {
 
   return (
     <div className="forgot-form">
-      <form action="">
+      <form>
         <h1>Forgot Password</h1>
-        <div className="forgot-form__input-box">
+        <div className="input-box">
           <input type="text" placeholder="Email" required />
           <FaUser className="icon" />
         </div>
@@ -20,14 +19,13 @@ const ForgotForm = () => {
           Send Email
         </button>
       </div>
-      <div className="login-form__goback-link">
+      <div className="go-back">
         <p>
-           <Link to="/register">Sign In</Link>
+           <Link to="/login">Go back</Link>
         </p>
       </div>
     </div>
   );
 };
-
 
 export default ForgotForm;

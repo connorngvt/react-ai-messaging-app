@@ -1,24 +1,25 @@
 import React from "react";
 import "./RegisterForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const RegisterForm = () => {
   return (
     <div className="register-form">
-      <form action="">
+      <form>
         <h1>Register</h1>
-        <div className="register-form__input-box">
+        <div className="input-box">
           <input type="text" placeholder="Username" required />
           <FaUser className="icon" />
         </div>
-        <div className="register-form__input-box">
-          <input type="password" placeholder="Password" required />
-          <FaLock className="icon" />
+        <div className="input-box">
+          <input type="text" placeholder="Email" required />
+          <MdEmail className="icon" />
         </div>
-        <div className="register-form__input-box">
-          <input type="password" placeholder="Confirm Password" required />
+        <div className="input-box">
+          <input type="password" placeholder="Password" required />
           <FaLock className="icon" />
         </div>
       </form>
@@ -27,7 +28,7 @@ const RegisterForm = () => {
           Register
         </button>
       </div>
-      <div className="register-form__login-link">
+      <div className="login-link">
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>

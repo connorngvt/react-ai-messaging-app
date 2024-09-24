@@ -14,14 +14,14 @@ const ForgotForm = () => {
           <FaUser className="icon" />
         </div>
       </form>
-      <div class="col-auto">
+      <div className="col-auto">
         <button id="button" type="submit" className="btn btn-primary mb-3">
           Send Email
         </button>
       </div>
       <div className="go-back">
         <p>
-           <Link to="/login">Go back</Link>
+           <Link to="/auth/login">Go back</Link>
         </p>
       </div>
     </div>

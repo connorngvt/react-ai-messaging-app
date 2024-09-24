@@ -6,10 +6,16 @@ import {
   Navigate,
 } from "react-router-dom";
 import LoginRegisterPage from "./pages/LoginRegisterPage";
+import MessagingPage from "./pages/MessagingPage";
 
 function App() {
-
+  
+  // Hardcoded for now, replace with logic later
   const isAuthenticated = false;
+
+  const ProtectedRoute = ({ children }) => {
+    return isAuthenticated ? children : <Navigate to="/auth/login" />;
+  };
 
   return (
     <Router>
@@ -20,11 +26,19 @@ function App() {
             isAuthenticated ? (
               <Navigate to="/messaging" />
             ) : (
-              <Navigate to="/login" />
+              <Navigate to="/auth/login" />
             )
           }
         />
-        <Route path="/*" element={<LoginRegisterPage />} />
+        <Route path="/auth/*" element={<LoginRegisterPage />} />
+        <Route
+          path="/messaging"
+          element={
+            <ProtectedRoute>
+              <MessagingPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

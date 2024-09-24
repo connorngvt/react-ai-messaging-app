@@ -24,16 +24,16 @@ const LoginForm = () => {
           <input type="checkbox" />
           Remember me
         </label>
-        <Link to="/forgot">Forgot password</Link>
+        <Link to="/auth/forgot">Forgot password</Link>
       </div>
-      <div class="col-auto">
+      <div className="col-auto">
         <button id="button" type="submit" className="btn btn-primary mb-3">
           Login
         </button>
       </div>
       <div className="register-link">
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/auth/register">Register</Link>
         </p>
       </div>
     </div>

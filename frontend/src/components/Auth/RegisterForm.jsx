@@ -12,7 +12,7 @@ import { doc, setDoc } from "firebase/firestore";
 const RegisterForm = () => {
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [avatar, setAvatar] = useState({
     file: null,
@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setLoading(true);
 
     const formData = new FormData(e.target);
     const { username, email, password } = Object.fromEntries(formData);
@@ -38,7 +38,7 @@ const RegisterForm = () => {
     try {
       // Create user using firebase authentication
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      
+
       // Create new document under the users collection in firestore
       await setDoc(doc(db, "users", res.user.uid), {
         username,
@@ -62,7 +62,7 @@ const RegisterForm = () => {
         console.log("Error:", err.message);
       }
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
@@ -97,8 +97,8 @@ const RegisterForm = () => {
           />
           <FaLock className="icon" />
         </div>
-        <button id="button" type="submit" disabled={isLoading}>
-          {isLoading ? "Loading" : "Register"}
+        <button id="button" type="submit" disabled={loading}>
+          {loading ? "Loading" : "Register"}
         </button>
       </form>
       <div className="login-link">

@@ -5,11 +5,14 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import LoginRegisterPage from "./pages/LoginRegisterPage";
 import MessagingPage from "./pages/MessagingPage";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
-  
+
   // Hardcoded for now, replace with logic later
   const isAuthenticated = false;
 
@@ -19,6 +22,7 @@ function App() {
 
   return (
     <Router>
+      <ToastContainer position="bottom-right" autoClose={5000}/>
       <Routes>
         <Route
           path="/"

@@ -1,29 +1,74 @@
 import React, { useState } from "react";
 import "./RegisterForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { toast } from "react-toastify";
+import { auth, db } from "../../lib/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [avatar, setAvatar] = useState({
     file: null,
-    url: ""
-  })
+    url: "",
+  });
 
   const handleAvatar = (e) => {
     if (e.target.files[0]) {
       setAvatar({
         file: e.target.files[0],
-        url: URL.createObjectURL(e.target.files[0])
-      })
+        url: URL.createObjectURL(e.target.files[0]),
+      });
+    }
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.target);
+    const { username, email, password } = Object.fromEntries(formData);
+
+    try {
+      // Create user using firebase authentication
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      
+      // Create new document under the users collection in firestore
+      await setDoc(doc(db, "users", res.user.uid), {
+        username,
+        email,
+        id: res.user.uid,
+        blocked: [],
+      });
+      // Create new document under the userchats collection in firestore
+      await setDoc(doc(db, "userchats", res.user.uid), {
+        chats: [],
+      });
+
+      toast.success("Account created! You can login now!");
+      navigate("/auth/login");
+    } catch (err) {
+      if (err.code === "auth/email-already-in-use") {
+        toast.error("The email is already in use.");
+        console.log("Error: Email already in use");
+      } else {
+        toast.error("An error occurred. Please try again.");
+        console.log("Error:", err.message);
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="register-form">
-      <form>
+      <form onSubmit={handleRegister}>
         <h1>Register</h1>
         <label htmlFor="file">
           <img src={avatar.url || "/avatar.png"} alt="avatar" />
@@ -40,7 +85,7 @@ const RegisterForm = () => {
           <FaUser className="icon" />
         </div>
         <div className="input-box">
-          <input type="text" name="email" placeholder="Email" required />
+          <input type="email" name="email" placeholder="Email" required />
           <MdEmail className="icon" />
         </div>
         <div className="input-box">
@@ -52,12 +97,10 @@ const RegisterForm = () => {
           />
           <FaLock className="icon" />
         </div>
-      </form>
-      <div className="col-auto">
-        <button id="button" type="submit" className="btn btn-primary mb-3">
-          Register
+        <button id="button" type="submit" disabled={isLoading}>
+          {isLoading ? "Loading" : "Register"}
         </button>
-      </div>
+      </form>
       <div className="login-link">
         <p>
           Already have an account? <Link to="/auth/login">Login</Link>

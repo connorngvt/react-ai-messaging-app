@@ -51,7 +51,7 @@
     margin: -15px 0 15px;
 
     label {
-        input {
+      input {
         accent-color: #000;
         margin-right: 4px;
       }
@@ -83,6 +83,11 @@
 
     &:hover {
       background: hsla(0, 0%, 0%, 0.8);
+    }
+
+    &:disabled {
+      background: hsla(0, 0%, 0%, 0.8);
+      cursor: not-allowed;
     }
   }
 

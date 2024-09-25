@@ -78,6 +78,11 @@
     &:hover {
       background: hsla(0, 0%, 0%, 0.8);
     }
+
+    &:disabled {
+      background: hsla(0, 0%, 0%, 0.8);
+      cursor: not-allowed;
+    }
   }
 
   .login-link {

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 
 const ForgotForm = () => {
-
   return (
     <div className="forgot-form">
       <form>
@@ -21,7 +20,7 @@ const ForgotForm = () => {
       </div>
       <div className="go-back">
         <p>
-           <Link to="/auth/login">Go back</Link>
+          <Link to="/auth/login">Go back</Link>
         </p>
       </div>
     </div>

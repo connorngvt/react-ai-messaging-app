@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { auth, db } from "../../lib/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import upload from "../../lib/upload";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -35,18 +36,24 @@ const RegisterForm = () => {
     const formData = new FormData(e.target);
     const { username, email, password } = Object.fromEntries(formData);
 
-    try {
-      // Create user using firebase authentication
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+    if (avatar.file == null) {
+      toast.error("Please upload an avatar image.")
+      setLoading(false);
+      return;
+    }
 
-      // Create new document under the users collection in firestore
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      const imgUrl = await upload(avatar.file);
+
       await setDoc(doc(db, "users", res.user.uid), {
         username,
         email,
         id: res.user.uid,
+        avatar: imgUrl,
         blocked: [],
       });
-      // Create new document under the userchats collection in firestore
+
       await setDoc(doc(db, "userchats", res.user.uid), {
         chats: [],
       });

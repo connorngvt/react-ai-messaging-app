@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import LoginForm from "../components/auth/LoginForm";
+import LoginForm from "../components/Auth/LoginForm";
 import RegisterForm from "../components/Auth/RegisterForm";
-import ForgotForm from "../components/auth/ForgotForm";
+import ForgotForm from "../components/Auth/ForgotForm";
 import "./LoginRegisterPage.css";
-import ResetForm from "../components/auth/ResetForm";
+import ResetForm from "../components/Auth/ResetForm";
 
 const LoginRegisterPage = () => {
   return (

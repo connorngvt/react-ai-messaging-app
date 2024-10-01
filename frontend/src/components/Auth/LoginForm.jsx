@@ -16,9 +16,7 @@ const LoginForm = () => {
     const formData = new FormData(e.target);
     const { email, password } = Object.fromEntries(formData);
     try {
-      // Sign in attempt using firebase
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("Successfully logged in.")
     }
     catch (err) {
       if (err.code === "auth/invalid-credential") {

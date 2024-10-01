@@ -8,13 +8,29 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginRegisterPage from "./pages/LoginRegisterPage";
 import MessagingPage from "./pages/MessagingPage";
+import { useUserStore } from "./lib/userStore";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./lib/firebase";
 
 function App() {
-  // Hardcoded for now, replace with logic later
-  const isAuthenticated = true;
+
+  const {currentUser, isLoading, fetchUserInfo} = useUserStore();
+
+  useEffect(() => {
+    const unSub = onAuthStateChanged(auth, (user) => {
+      fetchUserInfo(user?.uid);
+    })
+
+    return () => {
+      unSub();
+    }
+  }, [fetchUserInfo]);
+
+  if (isLoading) return <div className="loading">Loading...</div>
 
   const ProtectedRoute = ({ children }) => {
-    return isAuthenticated ? children : <Navigate to="/auth/login" />;
+    return currentUser ? children : <Navigate to="/auth/login" />;
   };
 
   return (
@@ -24,7 +40,7 @@ function App() {
         <Route
           path="/"
           element={
-            isAuthenticated ? (
+            currentUser ? (
               <Navigate to="/messaging" />
             ) : (
               <Navigate to="/auth/login" />

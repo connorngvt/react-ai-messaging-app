@@ -1,19 +1,22 @@
-import React from 'react'
-import "./MessagingPage.css"
-import List from '../components/List/List'
-import Chat from '../components/Chat/Chat'
-import Detail from '../components/Detail/Detail'
+import { useEffect } from "react";
+import "./MessagingPage.css";
+import List from "../components/List/List";
+import Chat from "../components/Chat/Chat";
+import Detail from "../components/Detail/Detail";
+import { useChatStore } from "../lib/chatStore";
 
 const MessagingPage = () => {
+  const { chatId } = useChatStore();
+
   return (
-    <div className='messagingPage'>
-      <div className='container'>
+    <div className="messagingPage">
+      <div className="container">
         <List />
-        <Chat />
-        <Detail />
+        {chatId && <Chat />}
+        {chatId && <Detail />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MessagingPage
+export default MessagingPage;

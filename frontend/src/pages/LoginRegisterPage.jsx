@@ -7,7 +7,7 @@ import ResetForm from "../components/Auth/ResetForm";
 
 const LoginRegisterPage = () => {
   return (
-    <div>
+    <div className="loginRegisterPage">
       <Routes>
         <Route path="/" element={<Navigate to="login" />} />
         <Route path="login" element={<LoginForm />} />

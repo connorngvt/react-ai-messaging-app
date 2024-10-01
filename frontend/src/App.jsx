@@ -11,7 +11,7 @@ import MessagingPage from "./pages/MessagingPage";
 
 function App() {
   // Hardcoded for now, replace with logic later
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   const ProtectedRoute = ({ children }) => {
     return isAuthenticated ? children : <Navigate to="/auth/login" />;

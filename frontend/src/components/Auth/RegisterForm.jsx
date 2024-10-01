@@ -63,10 +63,8 @@ const RegisterForm = () => {
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
         toast.error("The email is already in use.");
-        console.log("Error: Email already in use");
       } else {
         toast.error("An error occurred. Please try again.");
-        console.log("Error:", err.message);
       }
     } finally {
       setLoading(false);

@@ -23,10 +23,8 @@ const LoginForm = () => {
     catch (err) {
       if (err.code === "auth/invalid-credential") {
         toast.error("Invalid email or password. Please try again.");
-        console.log("Error: Invalid email or password.");
       } else {
         toast.error("An error occurred. Please try again.");
-        console.log("Error:", err.message);
       }
     }
     finally {

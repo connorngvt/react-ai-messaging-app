@@ -1,25 +1,26 @@
 .messagingPage {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-image: url("/bg.jpg");
+  /* background-image: url("/bg.jpg"); */
+  /* background-color: white; */
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  color: white;
+  color: black;
 
   .container {
     width: 100%;
     height: 100%;
-    background-color: rgba(17, 25, 40, 0.75);
-    backdrop-filter: blur(19px) saturate(180%);
+    /* background-color: rgba(17, 25, 40, 0.75); */
+    /* backdrop-filter: blur(19px) saturate(180%); */
     /* border: 1px solid rgba(255, 255, 255, 0.125); */
     display: flex;
   }
 
   ::-webkit-scrollbar {
     height: 0;
-    width: 15px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-track {
@@ -27,7 +28,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsla(0, 0%, 100%, 0.1);
+    background: hsla(0, 0%, 53%, 0.1);
     border-radius: 10px;
   }
 

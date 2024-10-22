@@ -1,14 +1,14 @@
 .detail {
     flex: 1;
     overflow: scroll;
-
+    background-color: #f5f5f5;
     .user {
         padding: 30px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        border-bottom: 1px solid #dddddd35;
+        border-bottom: 1px solid #DDDDDD;
 
         img {
             width: 100px;
@@ -23,7 +23,6 @@
         display: flex;
         flex-direction: column;
         gap: 25px;
-
         .option {
 
             .title {
@@ -66,7 +65,7 @@
 
                         span {
                             font-size: 14px;
-                            color: lightgray;
+                            color: black;
                             font-weight: 300;
                         }
                     }
